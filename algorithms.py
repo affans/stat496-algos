@@ -2,8 +2,10 @@ import numpy as np
 
 def z_score_normalize(data, threshold=3.0):
     """Assigned to Aysha: Normalizes and removes outliers."""
+    print("z-score normalizer function called")
     # TODO: Implement logic
     pass
+
 
 def impute_missing_values(data):
     """Assigned to Priyanshu: Replaces None, "", and "NA" with the mean."""
