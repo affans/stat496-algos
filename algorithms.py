@@ -9,8 +9,6 @@ def z_score_normalize(data, threshold=3.0):
     # TODO: Implement logic
     pass
 
-result = z_score_normalize(fake_data, threshold = 3.0)
-print(result)
 
 def impute_missing_values(data):
     """Assigned to Priyanshu: Replaces None, "", and "NA" with the mean."""
