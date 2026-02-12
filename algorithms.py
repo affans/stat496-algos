@@ -5,7 +5,7 @@ def z_score_normalize(data, threshold = 1.0):
     
     print("z-score normalizer function called")
     
-    # TODO: Implement logic
+    # Implemented logic
     
     np.set_printoptions(legacy = '1.25') #added this so the data prints without np.float64. referenced stackOverflow
     
