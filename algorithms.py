@@ -37,7 +37,7 @@ def z_score_normalize(data, threshold = 1.0):
     
 def impute_missing_values(data):
     """Assigned to Priyanshu: Replaces None, "", and "NA" with the mean."""
-    print("Feat Imputer function called")
+    print("Impute missing value function called")
     # TODO: Implement logic
     pass
 
