@@ -19,7 +19,7 @@ def z_score_normalize(data, threshold = 1.0):
     elif(str_checker == True):
         print("List cannot contain any strings. This contains a string.\n")
         clean_list = data #maybe I should be returning the list without the string?
-    else:
+    else: 
         #accepts negative and duplicate values
         mean_data = np.mean(data)
         sd_data = np.std(data)
