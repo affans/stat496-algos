@@ -4,8 +4,9 @@ def z_score_normalize(data, threshold = 1.0):
     """Assigned to Aysha: Normalizes and removes outliers."""
     print("\nZ-score Normalizer function called.\n")
     
-    # Implemented logic
+    # TODO: Implemented logic
     
+
     np.set_printoptions(legacy = '1.25') #added this so the data prints without np.float64. referenced stackOverflow
     
     #implementing my assigned algorithm now:
@@ -36,6 +37,7 @@ def z_score_normalize(data, threshold = 1.0):
     print('\n')
     return (clean_list) #this is the cleaned list that we are returning
     #pass
+
     
 def impute_missing_values(data):
     """Assigned to Priyanshu: Replaces None, "", and "NA" with the mean."""
