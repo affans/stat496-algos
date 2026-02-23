@@ -40,19 +40,39 @@ def impute_missing_values(data):
     #Below code it loks for all the missing entry and then we determine previous value and next value to calculate average and add it in the list. 
     for p in range(len(data)):
         if data[p] in MissingValues:
-            PreviousValue = data[p - 1]
-
+            
+            #Added for loop to keep looking for PreviousValue until its found. 
+            PreviousValue = None
+            for k in range(p - 1, -1, -1):
+                if data[k] not in MissingValues:
+                    PreviousValue = data[k]
+                    break
+            
+            #Added for loop to keep looking for NextValue until its found.
             NextValue = None
             for j in range(p + 1, len(data)):
                 if data[j] not in MissingValues:
                     NextValue = data[j]
                     break
+            
+            #Incase if NextValue is blank then basically for loop begins and look for the value from the start to end of list. 
+            if NextValue in MissingValues:
+                for l in range(0,p):
+                    if data[l] not in MissingValues:
+                        NextValue = data[l]
+                        break
 
-            if NextValue is not None:
-                Avg = (PreviousValue + NextValue) / 2
-            else:
+            if NextValue is not None and PreviousValue is not None:
+                Avg = ((PreviousValue + NextValue) / 2)
+                if Avg.is_integer(): #Referenced from StackOverflow and Google AI Overview upon search
+                    Avg = int(Avg)
+            elif PreviousValue is not None:
                 Avg = PreviousValue
-            for value in range (p,j):
+            else:
+                Avg = NextValue
+            for value in range(p, len(data)):
+                if data[value] not in MissingValues:
+                    break
                 data[value] = Avg
                 
     
