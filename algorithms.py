@@ -43,6 +43,75 @@ def impute_missing_values(data):
     """Assigned to Priyanshu: Replaces None, "", and "NA" with the mean."""
     print("Impute missing value function called")
     # TODO: Implement logic
+    print("Impute Missing Values function called")
+
+    MissingValues = [None, "", "NA"] #Created Group for all possible missing values
+    NumberValues = []
+    
+    #Below is the for loop to go over each values in the List and looks for whether it has any missingvalue or not.
+    #Also then we convert Non-missing values to String and make sure whether this has valid numbers and if yes then we store it and if not then we display error to user. 
+    for i in data:
+        if i in MissingValues:
+            pass
+        else:
+            AllStrings = str(i) #referenced from W3schools to convert into string
+            Number = True
+            for ch in AllStrings:
+                if ch not in "0123456789":
+                    Number = False
+            
+            if Number == True:
+                NumberValues.append(AllStrings)
+            else:
+                print("The element from a string is no valid number, please check the values")
+                    
+                return data
+    
+    
+    #This returns 0 for the same length of missing values if whole list is missing data. 
+    if len(NumberValues) == 0:
+        return [0] * len(data)
+    
+    #Below code it loks for all the missing entry and then we determine previous value and next value to calculate average and add it in the list. 
+    for p in range(len(data)):
+        if data[p] in MissingValues:
+            
+            #Added for loop to keep looking for PreviousValue until its found. 
+            PreviousValue = None
+            for k in range(p - 1, -1, -1):
+                if data[k] not in MissingValues:
+                    PreviousValue = data[k]
+                    break
+            
+            #Added for loop to keep looking for NextValue until its found.
+            NextValue = None
+            for j in range(p + 1, len(data)):
+                if data[j] not in MissingValues:
+                    NextValue = data[j]
+                    break
+            
+            #Incase if NextValue is blank then basically for loop begins and look for the value from the start to end of list. 
+            if NextValue in MissingValues:
+                for l in range(0,p):
+                    if data[l] not in MissingValues:
+                        NextValue = data[l]
+                        break
+
+            if NextValue is not None and PreviousValue is not None:
+                Avg = ((PreviousValue + NextValue) / 2)
+                if Avg.is_integer(): #Referenced from StackOverflow and Google AI Overview upon search
+                    Avg = int(Avg)
+            elif PreviousValue is not None:
+                Avg = PreviousValue
+            else:
+                Avg = NextValue
+            for value in range(p, len(data)):
+                if data[value] not in MissingValues:
+                    break
+                data[value] = Avg
+                
+    
+    return data
     pass
 
 def min_max_scale(data):
