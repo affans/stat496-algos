@@ -118,4 +118,28 @@ def min_max_scale(data):
     """Assigned to Glenn: Scales values to the range ."""
     print("First revision on a feature branch.")
     # TODO: Implement logic
-    pass
+
+    # First, check if list is empty. Since min()/max() are iterative functions
+    # they cannot be called on an empty list, therfore this must be done first.
+    if not data:
+        print("The list is empty - nothing to scale.")
+        scaledList = []
+        return scaledList
+    
+    # Save minimum and maximum of the list to compute the scaled list.
+    mini = min(data)
+    maxi = max(data)
+
+    # If min = max, then it follows that all list elements are equal,
+    # therefore, all will be scaled to 0.0 -> create a list with n 0s
+    if(mini == maxi):
+        scaledList = [0] * len(data)
+
+    # If neither edge case above is encountered, compute the scaled elements
+    else:
+        scaledList = []
+
+        for x in data:
+            scaledList.append((x - mini) / (maxi - mini))
+
+    return scaledList
