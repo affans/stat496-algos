@@ -116,5 +116,6 @@ def impute_missing_values(data):
 
 def min_max_scale(data):
     """Assigned to Glenn: Scales values to the range ."""
+    print("First revision on a feature branch.")
     # TODO: Implement logic
     pass
